@@ -131,21 +131,26 @@
       </div>
     </div>
   </nav>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-6">
-            <ul class="row list-unstyled">
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+<div class="container grid grid-cols-4 gap-4 row-span-full items-stretch">
+    <!-- <div class="row mt-5">
+        <div class="col-6"> -->
             <% for(var i=0; i<posts.length; i++) {%>
-            <li class="col-6 justify-content-between mt-5">
+            <!-- <li class="col-6 justify-content-between mt-5"> -->
                 <a href="/post/<%= posts[i]._id%>">
-                <h2><%= posts[i].title%></h2>
-                <img class="img-fluid" src="<%= posts[i].image%>">
+                  <div class="card w-90 bg-base-100 shadow-xl h-full"></div>
+                  <img class="img-fluid h-max" src="<%= posts[i].image%>">
+                  <div class="card-body object-fill">
+                  <h2 class="card-title"><%= posts[i].title%></h2>
+                  <h2><%= posts[i].caption%></h2>
+                </div>
+              </div>
                 </a>
-            </li>
+            <!-- </li> -->
             <% } %>
-            </ul>
-            <div class="row justify-content-center mt-5">
-    </div>
+            <!-- <div class="row justify-content-center mt-5">
+            </div>
+    </div> -->
 </div>
   
   <%- include('partials/footer') -%>
