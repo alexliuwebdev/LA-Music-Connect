@@ -92,9 +92,9 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+      <!-- <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3"> -->
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+        <!-- <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
 
         <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
 
@@ -102,7 +102,7 @@
 
         <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
 
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a> -->
       </div>
       <div class="border-t border-gray-700 pt-4 pb-3">
         <div class="flex items-center px-5">
@@ -131,26 +131,29 @@
       </div>
     </div>
   </nav>
-  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-<div class="container grid grid-cols-4 gap-4 row-span-full items-stretch">
-    <!-- <div class="row mt-5">
-        <div class="col-6"> -->
-            <% for(var i=0; i<posts.length; i++) {%>
-            <!-- <li class="col-6 justify-content-between mt-5"> -->
-                <a href="/post/<%= posts[i]._id%>">
-                  <div class="card w-90 bg-base-100 shadow-xl h-full"></div>
-                  <img class="img-fluid h-max" src="<%= posts[i].image%>">
-                  <div class="card-body object-fill">
-                  <h2 class="card-title"><%= posts[i].title%></h2>
-                  <h2><%= posts[i].caption%></h2>
-                </div>
-              </div>
-                </a>
-            <!-- </li> -->
-            <% } %>
-            <!-- <div class="row justify-content-center mt-5">
-            </div>
-    </div> -->
-</div>
+  <div class="container card-container">
+    <h1>My Bookmarked Recipes</h1>
+    <% console.log(posts[0]) %> 
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% for(var i=0; i<posts.length; i++) {%>
+        <%if(posts[i].bookmarks.includes(user.id)) {%>
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= posts[i].image%>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= posts[i].title%></h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a href="/post/<%= posts[i]._id%>" class="btn btn-primary">View Recipe</a>
+            <!-- <a href="/post/<%= posts[i]._id%>" class="btn btn-primary">Edit</a> -->
+          </div>
+          <div class="card-footer">
+            <span class="badge rounded-pill bg-primary"><%= posts[i].country%></span>
+            <span class="badge rounded-pill bg-secondary"><%= posts[i].dish%></span>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+    </div>
   
   <%- include('partials/footer') -%>
