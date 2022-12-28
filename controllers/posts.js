@@ -85,6 +85,42 @@ module.exports = {
       console.log(err);
     }
   },
+  bookmarkPost: async (req, res)=>{
+    var bookmarked = false
+    try{
+      var post = await Post.findById({_id:req.params.id})
+      bookmarked = (post.bookmarks.includes(req.user.id))
+    } catch(err){
+    }
+    //if already bookmarked we will remove user from likes array
+    if(bookmarked){
+      try{
+        await Post.findOneAndUpdate({_id:req.params.id},
+          {
+            $pull : {'bookmarks' : req.user.id}
+          })
+          
+          console.log('Removed user from bookmarks array')
+          res.redirect('back')
+        }catch(err){
+          console.log(err)
+        }
+      }
+      //else add user to bookmarked array
+      else{
+        try{
+          await Post.findOneAndUpdate({_id:req.params.id},
+            {
+              $addToSet : {'bookmarks' : req.user.id}
+            })
+            
+            console.log('Added user to bookmarks array')
+            res.redirect(`back`)
+        }catch(err){
+            console.log(err)
+        }
+      }
+    },
   deletePost: async (req, res) => {
     try {
       // Find post by id

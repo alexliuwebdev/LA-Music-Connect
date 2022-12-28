@@ -18,7 +18,11 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   likes: {
-    type: Number,
+    type: Array,
+    required: true,
+  },
+  bookmarks: {
+    type: Array,
     required: true,
   },
   user: {
