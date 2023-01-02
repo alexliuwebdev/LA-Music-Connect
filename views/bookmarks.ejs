@@ -18,7 +18,7 @@
 
               <a href="/myposts" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Posts</a>
 
-              <a href="/likedposts" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liked Posts</a>
+              <a href="/bookmarks" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liked Posts</a>
 
               <a href="/profile" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Post</a>
 
@@ -150,7 +150,7 @@
           <img class="img-fluid h-max" src="<%= posts[i].image%>">
           <div class="card-body object-fill">
           <h2 class="card-title"><%= posts[i].title%></h2>
-          <%if(posts[i].likes.includes(user.id)) {%>
+          <%if(posts[i].bookmarks.includes(user.id)) {%>
           <!-- <ul class="row list-unstyled">
           <li class="col-6 justify-content-between mt-5"> -->
           <h2><%= posts[i].caption%></h2>

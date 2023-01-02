@@ -10,7 +10,7 @@ router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, postsController.getProfile);
 router.get("/feed", ensureAuth, postsController.getFeed);
 router.get("/myposts", ensureAuth, postsController.getMyPosts);
-router.get("/likedposts", ensureAuth, postsController.getLikedPosts)
+router.get("/bookmarks", ensureAuth, postsController.getBookmarks)
 
 //Routes for user login/signup
 router.get("/login", authController.getLogin);
